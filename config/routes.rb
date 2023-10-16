@@ -7,17 +7,18 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
   
-  namespace :user do
-      get '/users/unsubscribe' => 'users#unsubscribe'
-      get 'users/mypage' => 'users#show'
-      get '/users/information/edit' => 'users#edit'
-      patch '/users' => 'users#update'
-      patch '/users/withdraw' => 'users#withdraw'
+  namespace :public do
+      get "/users/unsubscribe" => "users#unsubscribe"
+      get "users/mypage" => "users#show"
+      get "/users/information/edit" => "users#edit"
+      patch "/users" => "users#update"
+      patch "/users/withdraw" => "users#withdraw"    
       resources :reviews
       resources :boards, only: [:index, :show, :create]
       resources :threads
       resources :comments, only: [:create, :edit, :update]
       
+  end
   
   #管理者用
   #URL /admin/sign_in ...

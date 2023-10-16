@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <p><h1>マイページ</h1></p>
+            
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>ユーザー名</th>
+                            <th><%= @user.name %></th>
+                        </tr>
+                        <tr>
+                            <th>ユーザー画像</th>
+                            <th><p><%= image_tag @user.get_profile_image(100, 100) %></p></th>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <%= link_to public_users_information_edit_path, class:'btn btn-light btn-outline-secondary btn-block' do %>
+                    <i class="fa-solid fa-user-cog"></i>
+                <% end %>
+        </div>
+        
+        <div class="col-lg-4">
+            <p>お気に入りレビュー</p>
+        </div>
+        
+        <div class="col-lg-4">
+            <p>お気に入り掲示板</p>
+        </div>
+    </div>
+</div>
