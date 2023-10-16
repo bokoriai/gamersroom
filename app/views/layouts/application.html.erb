@@ -15,7 +15,7 @@
     <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-          <div class="navbar-brand p-3"><%= link_to "Gamer'sRoom", root_path, class: 'nav-link text-light' %></div>
+          <div class="navbar-brand p-3"><%= link_to "Gamer'sRoom", admin_path, class: 'nav-link text-light' %></div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                           aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -25,7 +25,7 @@
                 
                   <% if user_signed_in? %>
                     <li class="nav-item">
-                      <%= link_to 'TOP', root_path, class: 'nav-link text-light' %>
+                      <%= link_to 'About', public_about_path, class: 'nav-link text-light' %>
                     </li>
         
                     <li class="nav-item">
@@ -39,7 +39,11 @@
                     <li class="nav-item">
                       <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
                     </li>
-        
+                  <% elsif admin_signed_in? %>
+                    <li class="nav-item">
+                      <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
+                    </li>
+                    
                   <% else %>
                     <li class="nav-item">
                       <%= link_to '新規登録', new_user_registration_path, class: 'nav-link text-light' %>
@@ -50,7 +54,7 @@
                     </li>
         
                     <li class="nav-item">
-                      TOP
+                      <%= link_to 'About', public_about_path, class: 'nav-link text-light' %>
                     </li>
         
                     <li class="nav-item">

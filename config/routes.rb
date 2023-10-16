@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   }
   
   namespace :public do
+      get "/about" => "homes#about"
       get "/users/unsubscribe" => "users#unsubscribe"
-      get "users/mypage" => "users#show"
+      get "/users/mypage" => "users#show"
       get "/users/information/edit" => "users#edit"
       patch "/users" => "users#update"
       patch "/users/withdraw" => "users#withdraw"    
@@ -27,14 +28,13 @@ Rails.application.routes.draw do
   }
   
   namespace :admin do
+    get '/' => 'homes#top'
     resources :genres, only: [:index, :create, :edit, :update]
     resources :reviews
     resources :boards, only: [:index]
     resources :comments
     resources :threads
   end
-  
-  root to: 'homes#top'
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
