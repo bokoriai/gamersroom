@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       patch "/users" => "users#update"
       patch "/users/withdraw" => "users#withdraw"    
       resources :reviews
-      resources :boards, only: [:index, :show, :create]
+      resources :boards, only: [:index, :show, :new, :create]
       resources :threads
       resources :comments, only: [:create, :edit, :update]
       
