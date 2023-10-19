@@ -1,7 +1,7 @@
 <div class="p-3 mb-2 bg-primary text-white">掲示板一覧</div>
 
 <% @boards.each do |board| %>
-    <%= link_to public_board_path(@board) do %>
+    <%= link_to public_board_path(board) do %>
         <%= board.title %>
     <% end %>
 <% end %>

@@ -3,7 +3,7 @@
         <div class="col-lg-4">
             <div class="p-3 mb-2 bg-primary text-white">ジャンル追加</div>
             <table class="table">
-                <%= form_with model:@genre, url: admin_genres_path, method: :post, local: true do |f| %>
+                <%= form_with model: @genre, url: admin_genres_path, method: :post, local: true do |f| %>
                 <tr><%= f.label :name, "ジャンル名" %></tr>
                 <br>
                 <tr><%= f.text_field :name %></tr>

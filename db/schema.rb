@@ -59,7 +59,6 @@ ActiveRecord::Schema.define(version: 2023_10_17_142943) do
     t.string "category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_boards_on_user_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -94,5 +93,4 @@ ActiveRecord::Schema.define(version: 2023_10_17_142943) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "boards", "users"
 end
