@@ -5,6 +5,8 @@ class Public::BoardsController < ApplicationController
     
     def create
         @board = Board.new(board_params)
+        @board.user_id = current_user.id
+        
         if @board.save
             redirect_to public_boards_path
         else
@@ -17,6 +19,7 @@ class Public::BoardsController < ApplicationController
     end
     
     def show
+        @board = Board.find(params[:id])
     end
     
     private

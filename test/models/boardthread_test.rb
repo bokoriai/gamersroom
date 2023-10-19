@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Public::ThreadsControllerTest < ActionDispatch::IntegrationTest
+class BoardthreadTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
