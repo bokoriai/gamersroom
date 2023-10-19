@@ -2,7 +2,6 @@ class Public::ReviewsController < ApplicationController
     def index
         @reviews = Review.all
         @newreview = Review.new
-        @review = Review.find(params[:id])
     end
     
     def show
