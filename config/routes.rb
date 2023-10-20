@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+  root to: "public/searches#search"
   #顧客用
   #URL /user/
   devise_for :users, skip: [:passwords], controllers: {
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       resources :boards, only: [:index, :show, :new, :create]
       resources :comments, only: [:create, :edit, :update]
       resources :boardthreads
+      
   end
   
   #管理者用
@@ -33,7 +34,7 @@ Rails.application.routes.draw do
     resources :boards, only: [:index]
     resources :comments
     resources :boardthreads
-    
+    resources :searches, only: [:search]
   end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
