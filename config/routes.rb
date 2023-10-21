@@ -14,11 +14,13 @@ Rails.application.routes.draw do
       get "/users/information/edit" => "users#edit"
       patch "/users" => "users#update"
       patch "/users/withdraw" => "users#withdraw"    
-      resources :reviews
+      resources :reviews do
+        resources :post_comments, only: [:create]
+      end
       resources :boards, only: [:index, :show, :new, :create]
-      resources :comments, only: [:create, :edit, :update]
-      resources :boardthreads
-      
+      resources :boardthreads do
+        resources :post_comments, only: [:create]
+      end
   end
   
   #管理者用
@@ -30,10 +32,13 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/' => 'homes#top'
     resources :genres, only: [:index, :create, :edit, :update]
-    resources :reviews
+    resources :reviews do
+      resources :post_comments, only: [:create]
+    end
     resources :boards, only: [:index]
-    resources :comments
-    resources :boardthreads
+    resources :boardthreads do
+      resources :post_comments, only: [:create]
+    end
     resources :searches, only: [:search]
   end
   

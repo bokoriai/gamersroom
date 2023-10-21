@@ -1,0 +1,21 @@
+<p>レビュー詳細</p>
+
+<%= @review.title %>
+<br>
+<%= @review.body %>
+<br>
+<div>
+    <p>コメント件数：<%= @review.post_comments.count %></p>
+    <% @review.post_comments.each do |post_comment| %>
+        <p><%= image_tag post_comments.user.get_profile_image(100,100) %></p>
+        <%= post_comment.user.name %>
+        <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+    <% end %>
+</div>
+
+<div>
+    <%= form_with model: [:public, @review, @post_comment] do |f| %>
+        <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+        <%= f.submit "送信する" %>
+    <% end %>
+</div>

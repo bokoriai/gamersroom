@@ -5,6 +5,8 @@ class Public::ReviewsController < ApplicationController
     end
     
     def show
+        @review = Review.find(params[:id])
+        @post_comment = PostComment.new
     end
     
     def create
