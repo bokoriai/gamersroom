@@ -4,9 +4,13 @@
     <div class="row">
         <div class="col-lg-8">
             <!--span class="border border-danger border-4"</span> -->
-            <%= @reviews.each do |review| %>
-                <%= review.title %>
+            <% @reviews.each do |review| %>
+                <p>レビュータイトル</p>
+                <%= link_to public_review_path(review) do %>
+                    <%= review.title %>
+                <% end %>
                 <br>
+                <p>レビュー本文</p>
                 <%= review.body %>
                 <br>
                 <!-- ユーザー名を表示させるコードを書く -->
@@ -14,7 +18,7 @@
         </div>
         
         <div class="col-lg-4">
-            <%= form_with model:@review, url: public_reviews_path, method: :post, local: true do |f| %>
+            <%= form_with model: @review, url: public_reviews_path, method: :post, local: true do |f| %>
             <%= f.label :title, "タイトル" %>
             <br>
             <%= f.text_field :title %>

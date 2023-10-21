@@ -38,9 +38,8 @@ class Public::ReviewsController < ApplicationController
     end
     
     private
-    
     def review_params
-        params.require(:review).permit(:title, :body, :star, :category)
+        params.permit(:title, :body, :star, :category)
     end
     
 end

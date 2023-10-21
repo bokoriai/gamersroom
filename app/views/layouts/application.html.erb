@@ -32,13 +32,18 @@
                       <%= link_to 'マイページ', public_users_mypage_path, class: 'nav-link text-light' %>
                     </li>
         
-                    <li>レビュー</li>
-        
-                    <li>掲示板</li>
+                    <li class="nav-item">
+                      <%= link_to 'レビュー', public_reviews_path, class: 'nav-link text-light' %>
+                    </li>
+                    
+                    <li class="nav-item">
+                      <%= link_to '掲示板', public_boards_path, class: 'nav-link text-light' %>
+                    </li>
         
                     <li class="nav-item">
                       <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
                     </li>
+                    
                   <% elsif admin_signed_in? %>
                     <li class="nav-item">
                       <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
@@ -58,11 +63,11 @@
                     </li>
         
                     <li class="nav-item">
-                      レビュー
+                      <%= link_to 'レビュー', public_reviews_path, class: 'nav-link text-light' %>
                     </li>
         
                     <li class="nav-item">
-                      掲示板
+                      <%= link_to '掲示板', public_boards_path, class: 'nav-link text-light' %>
                     </li>
                     
                   <% end %>
