@@ -5,15 +5,20 @@
         <div class="col-lg-8">
             <!--span class="border border-danger border-4"</span> -->
             <% @reviews.each do |review| %>
-                <p>レビュータイトル</p>
+                <strong>レビュータイトル</strong>
+                <br>
                 <%= link_to public_review_path(review) do %>
                     <%= review.title %>
                 <% end %>
                 <br>
-                <p>レビュー本文</p>
+                <strong>レビュー本文</strong>
+                <br>
                 <%= review.body %>
                 <br>
                 <!-- ユーザー名を表示させるコードを書く -->
+                <strong>ユーザー名</strong>
+                <%= review.user.name %>
+                <br>
             <% end %>
         </div>
         

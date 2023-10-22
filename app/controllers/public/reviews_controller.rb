@@ -1,7 +1,7 @@
 class Public::ReviewsController < ApplicationController
     def index
         @reviews = Review.all
-        @newreview = Review.new
+        @review = Review.new
     end
     
     def show
@@ -41,7 +41,7 @@ class Public::ReviewsController < ApplicationController
     
     private
     def review_params
-        params.permit(:title, :body, :star, :category)
+        params.require(:review).permit(:title, :body, :star, :category)
     end
     
 end

@@ -3,6 +3,10 @@ class Public::BoardthreadsController < ApplicationController
   end
 
   def create
+    @boardthread = Boardthread.new(boardthread_params)
+    @boardthread.user_id = current_user.id
+    @boardthread.save
+      redirect_to public_board_path(boardthread.board_id)
   end
 
   def show
@@ -19,5 +23,9 @@ class Public::BoardthreadsController < ApplicationController
   end
 
   def destroy
+  end
+  
+  def boardthread_params
+    params.require(:boardthread).permit(:title, :body, :user_id, :category, :board_id)
   end
 end

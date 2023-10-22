@@ -1,13 +1,10 @@
 class Public::PostCommentsController < ApplicationController
     def create
         review = Review.find(params[:review_id])
-        comment = current_user.post_comments.new(post_comment_params)
-        comment.review = review
+        comment = review.post_comments.new(post_comment_params)
+        comment.user_id = current_user.id
         comment.save
-        byebug
         redirect_to public_review_path(review)
-        
-
     end
     
     private

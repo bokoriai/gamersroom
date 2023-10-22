@@ -1,1 +1,29 @@
 <strong><%= @board.title %>掲示板</strong>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-7">
+            <% @boardthreads.each do |boardthread| %>
+                <%= boardthread.title %>
+                <br>
+                <%= boardthread.body %>
+                <br>
+            <% end %>
+        </div>
+        
+        <div class="col-lg-5">
+            <p>スレッド新規投稿フォーム</p>
+                <%= form_with model: @boardthreads, url: public_boardthreads_path, method: :post do |f| %>
+                    <%= f.label :title, "スレッドタイトル" %>
+                    <br>
+                    <%= f.text_field :title %>
+                    <br>
+                    <%= f.label :body, "スレッド本文" %>
+                    <br>
+                    <%= f.text_area :body %>
+                    <br>
+                    <%= f.submit '投稿', class: 'btn btn-primary' %>
+                <% end %>
+        </div>
+    </div>
+</div>

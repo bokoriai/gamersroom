@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 2023_10_21_121601) do
     t.text "body"
     t.integer "user_id"
     t.string "category"
+    t.integer "board_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -79,8 +80,8 @@ ActiveRecord::Schema.define(version: 2023_10_21_121601) do
   create_table "post_comments", force: :cascade do |t|
     t.text "comment"
     t.integer "user_id"
-    t.integer "review_id"
-    t.integer "boardthread_id"
+    t.integer "post_commentable_id"
+    t.string "post_commentable_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
