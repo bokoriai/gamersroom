@@ -5,8 +5,9 @@ class Public::BoardthreadsController < ApplicationController
   def create
     @boardthread = Boardthread.new(boardthread_params)
     @boardthread.user_id = current_user.id
+    @boardthread = board.id
     @boardthread.save
-      redirect_to public_board_path(boardthread.board_id)
+      redirect_to public_board_path(boardthread)
   end
 
   def show
@@ -14,6 +15,7 @@ class Public::BoardthreadsController < ApplicationController
   end
 
   def index
+    
   end
 
   def edit

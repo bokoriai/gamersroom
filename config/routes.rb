@@ -16,10 +16,12 @@ Rails.application.routes.draw do
       patch "/users/withdraw" => "users#withdraw"    
       resources :reviews do
         resources :post_comments, only: [:create]
+        resource :favorites, only: [:create, :destroy]
       end
       resources :boards, only: [:index, :show, :new, :create]
       resources :boardthreads do
         resources :post_comments, only: [:create]
+        resource :favorites, only: [:create, :destroy]
       end
   end
   
@@ -34,10 +36,12 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :reviews do
       resources :post_comments, only: [:create]
+      resource :favorites, only: [:create, :destroy]
     end
     resources :boards, only: [:index]
     resources :boardthreads do
       resources :post_comments, only: [:create]
+      resource :favorites, only: [:create, :destroy]
     end
     resources :searches, only: [:search]
   end
