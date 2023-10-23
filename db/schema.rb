@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 2023_10_22_182902) do
     t.string "star"
     t.string "category"
     t.integer "user_id"
+    t.integer "genre_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

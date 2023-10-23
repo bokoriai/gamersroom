@@ -1,5 +1,5 @@
 class Favorite < ApplicationRecord
     belongs_to :favorable, polymorphic: true
     
-    validates :user_id, uniqueness: {scope: :post_image_id}
+    validates :user_id, uniqueness: {scope: :favorable_id}
 end

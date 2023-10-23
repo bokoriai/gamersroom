@@ -14,6 +14,8 @@
         <div class="col-lg-5">
             <p>スレッド新規投稿フォーム</p>
                 <%= form_with model: @boardthreads, url: public_boardthreads_path, method: :post do |f| %>
+                    <%= f.hidden_field :id, value: @board.id %>
+
                     <%= f.label :title, "スレッドタイトル" %>
                     <br>
                     <%= f.text_field :title %>

@@ -3,11 +3,12 @@ class Public::BoardthreadsController < ApplicationController
   end
 
   def create
+    board = Board.find(params[:boardthread][:id])
     @boardthread = Boardthread.new(boardthread_params)
+    @boardthread.board_id = board.id
     @boardthread.user_id = current_user.id
-    @boardthread = board.id
     @boardthread.save
-      redirect_to public_board_path(boardthread)
+      redirect_to public_board_path(board)
   end
 
   def show
