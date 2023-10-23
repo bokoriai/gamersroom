@@ -3,12 +3,30 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-7">
-            <% @boardthreads.each do |boardthread| %>
-                <%= boardthread.title %>
-                <br>
-                <%= boardthread.body %>
-                <br>
-            <% end %>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>タイトル</th>
+                        <th>本文</th>
+                    </tr>
+                </thead>
+                
+                <% @boardthreads.each do |boardthread| %>
+                
+                <tbody>
+                    <tr>
+                        <th>
+                            <%= boardthread.title %>
+                        </th>
+                        <th>
+                            <%= boardthread.body %>
+                        </th>
+                    </tr>
+                </tbody>
+                
+                <% end %>
+            </table>
+            
         </div>
         
         <div class="col-lg-5">
