@@ -1,31 +1,71 @@
-<p>レビュー詳細</p>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <h2>レビュー詳細</h2>
+            <table class="table">
+                <tr>
+                    <th><strong>タイトル</strong></th>
+                    <td><%= @review.title %></td>
+                </tr>
+                <tr>
+                    <th><strong>本文</strong></th>
+                    <td><%= @review.body %></td>
+                </tr>
+                <tr>
+                    <th><strong>ジャンル</strong></th>
+                    <td><%= @review.genre.name %></td>
+                </tr>
+            </table>
+            
+            <% if @review.user == current_user %>
+            <table class="table">
+                <tr>
+                    <td><%= link_to '編集', edit_public_review_path(@review), class: 'btn btn-success btn-sm' %></td>
+                    <td><%= link_to '削除', public_review_path(@review), method: :delete, class: 'btn btn-danger btn-sm' %></td>
+                </tr>
+            </table>
+            <% end %>
+            
+            <div id="favorite_btn_<%= @review.id %>">
+                <%= render "public/favorites/btn", review: @review %>
+            </div>
+            
+            <table class="table">
+                <tr>
+                    <th>コメント件数</th>
+                    <td><%= @review.post_comments.count %></td>
+                </tr> 
+                
+                <% @review.post_comments.each do |post_comment| %>
+                <tr>
+                    <td>
+                        <%= image_tag post_comment.user.get_profile_image(50,50) %>
+                        <%= post_comment.user.name %>
+                    </td>
+                
+                </tr>
+                <tr>
+                    <td><%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %></td>
+                </tr>
+                
+                <% if @review.user == current_user %>
+                <tr>
+                    <td><%= link_to '削除', public_boardthread_post_comment_path(@review), method: :delete, class: 'btn btn-danger btn-sm' %></td>
+                </tr>
+                <% end %>
+                
+                <% end %>
+                
+            </table>
+            
+            <div>
+                <%= form_with model: [:public, @review, @post_comment] do |f| %>
+                    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+                    <%= f.submit "送信する" %>
+                <% end %>
+            </div>
 
-<p>タイトル</p>
-<%= @review.title %>
-<br>
-<p>本文</p>
-<%= @review.body %>
-<br>
-<p>ジャンル</p>
-<%= @review.genre.name %>
-<br>
-
-<div id="favorite_btn_<%= @review.id %>">
-  <%= render "public/favorites/btn", review: @review %>
+        </div>
+    </div>
 </div>
 
-<div>
-    <p>コメント件数：<%= @review.post_comments.count %></p>
-    <% @review.post_comments.each do |post_comment| %>
-        <p><%= image_tag post_comment.user.get_profile_image(100,100) %></p>
-        <%= post_comment.user.name %>
-        <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
-    <% end %>
-</div>
-
-<div>
-    <%= form_with model: [:public, @review, @post_comment] do |f| %>
-        <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-        <%= f.submit "送信する" %>
-    <% end %>
-</div>

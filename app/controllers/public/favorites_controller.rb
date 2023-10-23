@@ -1,23 +1,23 @@
 class Public::FavoritesController < ApplicationController
   def create
-    #if params[:review_id].present?
-      #reviewのいいねを作成
-    #else
+    if params[:review_id].present?
+      @review = Review.find(params[:review_id])
+      favorite = @review.favorites.new
+      favorite.user_id = current_user.id
+      favorite.save
+    else
       #boardthreadのいいねを作成
-    #end
-    @review = Review.find(params[:review_id])
-    #favorite = current_user.favorites.new(favorable_id: @review.id, favorable_type: "Review")
-    favorite = @review.favorites.new
-    favorite.user_id = current_user.id
-    
-    #comment = review.post_comments.new(post_comment_params)
-    #comment.user_id = current_user.id
-    favorite.save
+    end
   end
 
   def destroy
-    @review = Review.find(params[:review_id])
-    favorite = current_user.favorites.find_by(favorable_id: @review.id, favorable_type: "Review")
-    favorite.destroy
+    if params[:review_id].present?
+      @review = Review.find(params[:review_id])
+      favorite = @review.favorites.find_by(favorable_id: @review.id, favorable_type: "Review")
+      favorite.destroy
+    else
+      #boardthreadのいいねを削除
+    end
   end
+  
 end
