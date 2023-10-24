@@ -6,7 +6,10 @@ class Public::FavoritesController < ApplicationController
       favorite.user_id = current_user.id
       favorite.save
     else
-      #boardthreadのいいねを作成
+      @boardthread = Boardthread.find(params[:boardthread_id])
+      favorite = @boardthread.favorites.new
+      favorite.user_id = current_user.id
+      favorite.save
     end
   end
 
@@ -16,7 +19,9 @@ class Public::FavoritesController < ApplicationController
       favorite = @review.favorites.find_by(favorable_id: @review.id, favorable_type: "Review")
       favorite.destroy
     else
-      #boardthreadのいいねを削除
+      @boardthread = Boardthread.find(params[:boardthread_id])
+      favorite = @boardthread.favorites.find_by(favorable_id: @boardthread.id, favorable_type: "Boardthread")
+      favorite.destroy
     end
   end
   

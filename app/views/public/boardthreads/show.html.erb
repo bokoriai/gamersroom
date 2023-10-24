@@ -27,6 +27,10 @@
                 </table>
                 <% end %>
                 
+                <div id="favorite_btn_boardthread_<%= @boardthread.id %>">
+                    <%= render "public/favorites/btn_boardthread", boardthread: @boardthread %>
+                </div>            
+                
                 <table class="table">
                     <tr>
                         <th>コメント件数</th>

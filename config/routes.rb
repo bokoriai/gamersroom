@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       patch "/users" => "users#update"
       patch "/users/withdraw" => "users#withdraw"    
       resources :reviews do
-        resources :post_comments, only: [:create]
+        resources :post_comments, only: [:create, :destroy]
         resource :favorites, only: [:create, :destroy]
       end
       resources :boards, only: [:index, :show, :new, :create]
@@ -40,7 +40,7 @@ Rails.application.routes.draw do
     end
     resources :boards, only: [:index]
     resources :boardthreads do
-      resources :post_comments, only: [:create]
+      resources :post_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
     resources :searches, only: [:search]
