@@ -50,7 +50,7 @@
                 
                 <% if @review.user == current_user %>
                 <tr>
-                    <td><%= link_to '削除', public_boardthread_post_comment_path(@review), method: :delete, class: 'btn btn-danger btn-sm' %></td>
+                    <td><%= link_to '削除', public_review_post_comment_path(@review), method: :delete, class: 'btn btn-danger btn-sm' %></td>
                 </tr>
                 <% end %>
                 

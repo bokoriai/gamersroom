@@ -12,6 +12,7 @@ class Public::BoardthreadsController < ApplicationController
   end
 
   def show
+    @boardthread = Boardthread.find(params[:id])
     @post_comment = PostComment.new
   end
 

@@ -11,12 +11,14 @@
                     </tr>
                 </thead>
                 
-                <% @boardthreads.each do |boardthread| %>
+                <% @board.boardthreads.each do |boardthread| %>
                 
                 <tbody>
                     <tr>
                         <th>
-                            <%= boardthread.title %>
+                            <%= link_to public_boardthread_path(boardthread) do %>
+                                <%= boardthread.title %>
+                            <% end %>
                         </th>
                         <th>
                             <%= boardthread.body %>
@@ -29,7 +31,7 @@
             
         </div>
         
-        <div class="col-lg-5">
+        <div class="col-lg-3 offset-lg-2">
             <p>スレッド新規投稿フォーム</p>
                 <%= form_with model: @boardthreads, url: public_boardthreads_path, method: :post do |f| %>
                     <%= f.hidden_field :id, value: @board.id %>

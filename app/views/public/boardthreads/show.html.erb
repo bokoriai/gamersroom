@@ -1,2 +1,64 @@
-<h1>Public::Boardthreads#show</h1>
-<p>Find me in app/views/public/boardthreads/show.html.erb</p>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <h2>スレッド詳細</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>タイトル</th>
+                            <td><%= @boardthread.title %></td>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr>
+                            <th>本文</th>
+                            <td><%= @boardthread.body %></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <% if @boardthread.user == current_user %>
+                <table class="table">
+                    <tr>
+                        <td><%= link_to '編集', edit_public_boardthread_path(@boardthread), class: 'btn btn-success btn-sm' %></td>
+                        <td><%= link_to '削除', public_boardthread_path(@boardthread), class: 'btn btn-danger btn-sm' %></td>
+                    </tr>
+                </table>
+                <% end %>
+                
+                <table class="table">
+                    <tr>
+                        <th>コメント件数</th>
+                        <td><%= @boardthread.post_comments.count %></td>
+                    </tr>
+                
+                    <% @boardthread.post_comments.each do |post_comment| %>
+                        <tr>
+                            <td>
+                                <%= image_tag post_comment.user.get_profile_image(50,50) %>
+                                <%= post_comment.user.name %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %></td>
+                        </tr>
+                        <% if @boardthread.user == current_user %>
+                            <tr>
+                                <td><%= link_to '削除', public_boardthread_post_comment_path(@boardthread), method: :delete, class: 'btn btn-danger btn-sm' %></td>
+                            </tr>
+                        <% end %>
+                    
+                    <% end %>
+                
+                </table>
+                
+                <div>
+                    <%= form_with model: [:public, @boardthread, @post_comment] do |f| %>
+                        <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+                        <%= f.submit "送信する" %>
+                    <% end %>
+                </div>
+        </div>
+    </div>
+</div>
