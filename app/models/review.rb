@@ -1,5 +1,4 @@
 class Review < ApplicationRecord
-class User < ApplicationRecord
   
     belongs_to :user
     belongs_to :genre

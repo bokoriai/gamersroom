@@ -4,7 +4,7 @@ class Boardthread < ApplicationRecord
         if method == 'perfect'
             Boardthread.where(name: word)
         elsif method == 'forward'
-            Boardthread.where('name LIKE ?', word + '%')¶
+            Boardthread.where('name LIKE ?', word + '%')
         elsif method == 'backward'
             Boardthread.where('name LIKE ?', '%' + word)
         else
