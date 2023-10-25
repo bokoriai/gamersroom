@@ -3,8 +3,10 @@
         <tr>
             <div class="search_form">
                 <%= form_with url: public_tagsearches_search_path, method: :get, local: true do |f| %>
+                <td><%= f.label :word, "スレッド検索フォーム" %></td>
                 <td><%= f.text_field :word %></td>
-                <td></td>
+                <td><%= f.submit 'タグ検索' %></td>
+                <% end %>
             </div>
         </tr>
     </table>
