@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "public/searches#search"
+  root 'public/tagsearches#search'
   #顧客用
   #URL /user/
   devise_for :users, skip: [:passwords], controllers: {
@@ -13,7 +13,8 @@ Rails.application.routes.draw do
       get "/users/mypage" => "users#show"
       get "/users/information/edit" => "users#edit"
       patch "/users" => "users#update"
-      patch "/users/withdraw" => "users#withdraw"    
+      patch "/users/withdraw" => "users#withdraw"
+      get "tagsearches/search" => "tagsearches#search"
       resources :reviews do
         resources :post_comments, only: [:create, :destroy]
         resource :favorites, only: [:create, :destroy]
@@ -33,6 +34,7 @@ Rails.application.routes.draw do
   
   namespace :admin do
     get '/' => 'homes#top'
+    get 'tagsearches/search' => 'tagsearches#search'
     resources :genres, only: [:index, :create, :edit, :update]
     resources :reviews do
       resources :post_comments, only: [:create]

@@ -15,6 +15,11 @@
                             <th>本文</th>
                             <td><%= @boardthread.body %></td>
                         </tr>
+                        <% if @boardthread.category.present? %>
+                            <tr>
+                                <td><%= link_to @boardthread.category, public_tagsearches_search_path(content:@boardthread.category) %></td>
+                            </tr>
+                        <% end %>
                     </tbody>
                 </table>
                 
