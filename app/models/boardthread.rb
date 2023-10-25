@@ -1,4 +1,17 @@
 class Boardthread < ApplicationRecord
+  
+    def self.tagsearch_for(word, method)
+        if method == 'perfect'
+            Boardthread.where(name: word)
+        elsif method == 'forward'
+            Boardthread.where('name LIKE ?', word + '%')¶
+        elsif method == 'backward'
+            Boardthread.where('name LIKE ?', '%' + word)
+        else
+            Boardthread.where('name LIKE ?', '%' + word + '%')
+        end
+    end
+  
     belongs_to :board, dependent: :destroy
     belongs_to :user, dependent: :destroy
     has_many :post_comments, as: :post_commentable

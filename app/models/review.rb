@@ -1,4 +1,6 @@
 class Review < ApplicationRecord
+class User < ApplicationRecord
+  
     belongs_to :user
     belongs_to :genre
     has_many :post_comments, as: :post_commentable
