@@ -3,31 +3,8 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-7">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>タイトル</th>
-                        <th>本文</th>
-                    </tr>
-                </thead>
-                
-                <% @board.boardthreads.each do |boardthread| %>
-                
-                <tbody>
-                    <tr>
-                        <th>
-                            <%= link_to public_boardthread_path(boardthread) do %>
-                                <%= boardthread.title %>
-                            <% end %>
-                        </th>
-                        <th>
-                            <%= boardthread.body %>
-                        </th>
-                    </tr>
-                </tbody>
-                
-                <% end %>
-            </table>
+        
+        <%= render 'show', board: @board %>
             
         </div>
         
