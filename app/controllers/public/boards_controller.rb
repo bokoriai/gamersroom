@@ -20,7 +20,7 @@ class Public::BoardsController < ApplicationController
     
     def show
         @board = Board.find(params[:id])
-        @boardthreads = Boardthread.all
+        @boardthreads = @board.boardthreads
     end
     
     private

@@ -1,5 +1,9 @@
 <div class="container">
     <div class="child">
-        <%= render 'public/boards/show', board: @board, boardthreads: @boardthreads %>
+        <% if @word == @boardthreads %>
+            <%= render 'public/boards/show', boardthreads: @boardthreads %>
+        <% else %>
+            <p class="text-center">スレッドは存在しません</p>
+        <% end %>
     </div>
 </div>
