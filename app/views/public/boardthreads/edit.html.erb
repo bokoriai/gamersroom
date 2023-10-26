@@ -1,2 +1,25 @@
-<h1>Public::Boardthreads#edit</h1>
-<p>Find me in app/views/public/boardthreads/edit.html.erb</p>
+<div class="container">
+    <div class="child">
+        <h2>スレッド編集</h2>
+            <table class="table">
+                <%= form_with model: @boardthread, url: public_boardthread_path, method: :patch do |f| %>
+                    <tr>
+                        <td><label for="inputTitle">タイトル</label></td>
+                    </tr>
+                    <tr>
+                        <td><%= f.text_field :title, autofocus: true, id:"inputTitle", placeholder:"タイトル" %></td>
+                    </tr>
+                    <tr>
+                        <td><label for="inputBody">本文</label></td>
+                    </tr>
+                    <tr>
+                        <td><%= f.text_area :body, placeholder:"本文" %></td>
+                    </tr>
+
+                    <tr>
+                        <td><%= f.submit "編集する" %></td>
+                    </tr>
+                <% end %>
+            </table>
+    </div>
+</div>

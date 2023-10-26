@@ -21,12 +21,22 @@ class Public::BoardthreadsController < ApplicationController
   end
 
   def edit
+    @boardthread = Boardthread.find(params[:id])
   end
 
   def update
+    @boardthread = Boardthread.find(params[:id])
+    if @boardthread.update(boardthread_params)
+      redirect_to public_boardthread_path(@boardthread.id)
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @boardthread = Boardthread.find(params[:id])
+    @boardthread.destroy
+    redirect_to public_boardthreads_path
   end
   
   def boardthread_params

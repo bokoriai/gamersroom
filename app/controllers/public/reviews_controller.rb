@@ -27,7 +27,7 @@ class Public::ReviewsController < ApplicationController
     def update
         @review = Review.find(params[:id])
         if @review.update(review_params)
-            redirect_to public_review_path(@review) ,notice: "You have updated review successfully."
+            redirect_to public_review_path(@review.id) ,notice: "You have updated review successfully."
         else
             render :edit
         end

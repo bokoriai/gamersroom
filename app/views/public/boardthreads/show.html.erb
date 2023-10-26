@@ -54,7 +54,7 @@
                         </tr>
                         <% if @boardthread.user == current_user %>
                             <tr>
-                                <td><%= link_to '削除', public_boardthread_post_comment_path(@boardthread), method: :delete, class: 'btn btn-danger btn-sm' %></td>
+                                <td><%= link_to '削除', public_boardthread_post_comment_path(@boardthread, post_comment), method: :delete, class: 'btn btn-danger btn-sm' %></td>
                             </tr>
                         <% end %>
                     

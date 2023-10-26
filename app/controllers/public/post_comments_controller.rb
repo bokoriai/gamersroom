@@ -20,11 +20,8 @@ class Public::PostCommentsController < ApplicationController
             PostComment.find(params[:id]).destroy
             redirect_to public_review_path(params[:review_id])
         else
-            PostComment.find(params[:boardthread_id]).destroy
+            PostComment.find(params[:id]).destroy
             redirect_to public_boardthread_path(params[:boardthread_id])
-            #comment = PostComment.find(params[:boardthread_id])
-            #comment.destroy
-            #redirect_to public_boardthread_path(params[:boardthread_id])
         end
     end
     
