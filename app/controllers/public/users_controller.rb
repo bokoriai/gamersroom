@@ -14,10 +14,11 @@ class Public::UsersController < ApplicationController
     end
     
     def withdraw
-        @user = current_user
+        @user = User.find(current_user.id)
         @user.update(is_deleted: true)
         reset_session
-        redirect_to root_path
+        flash[:notice] = "退会処理を実行しました"
+        redirect_to public_tagsearches_search_path
     end
     
     private

@@ -9,11 +9,11 @@ Rails.application.routes.draw do
   
   namespace :public do
       get "/about" => "homes#about"
-      get "/users/unsubscribe" => "users#unsubscribe"
+      get "/users/unsubscribe" => "users#unsubscribe" #退会確認画面
+      patch "/users/withdraw" => "users#withdraw" #退会ステータス更新
       get "/users/mypage" => "users#show"
       get "/users/information/edit" => "users#edit"
       patch "/users" => "users#update"
-      patch "/users/withdraw" => "users#withdraw"
       get "tagsearches/search" => "tagsearches#search"
       resources :reviews do
         resources :post_comments, only: [:create, :destroy]
