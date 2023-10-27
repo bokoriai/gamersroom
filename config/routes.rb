@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   namespace :public do
       get "/about" => "homes#about"
       get "/users/unsubscribe" => "users#unsubscribe" #退会確認画面
-      patch "/users/withdraw" => "users#withdraw" #退会ステータス更新
+      patch "/users/withdraw" => "users#withdraw" #退会ステータス更新機能ß
       get "/users/mypage" => "users#show"
       get "/users/information/edit" => "users#edit"
       patch "/users" => "users#update"
@@ -45,8 +45,8 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
-    resources :searches, only: [:search]
   end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
+
