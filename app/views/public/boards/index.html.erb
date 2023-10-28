@@ -11,8 +11,16 @@
         </div>
         
         <div class="col-lg-3 offset-lg-2">
-            <%= link_to '掲示板新規作成はこちら', new_public_board_path, class: 'btn btn-outline-danger' %>
-            <br>
+            <% if user_signed_in? %>
+                <%= link_to '掲示板新規作成はこちら', new_public_board_path, class: 'btn btn-outline-danger' %>
+                <br>
+            <% else %>
+                <p class="text-center">
+                    掲示板新規作成には会員登録が必要です。<br>
+                    会員登録は<%= link_to 'こちら', new_user_registration_path %><br>
+                    既に会員登録済みの方は<%= link_to 'こちら', new_user_session_path %>
+                </p>
+            <% end %>
             <!-- 検索画面に戻るボタンを設置する -->
         </div>
     </div>
