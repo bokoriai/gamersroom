@@ -2,7 +2,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-7">
             <!--span class="border border-danger border-4"</span> -->
             <% @reviews.each do |review| %>
                 <strong>レビュータイトル</strong>
@@ -22,7 +22,7 @@
         </div>
         
         <%= form_with model: @review, url: public_reviews_path, method: :post, local: true do |f| %>
-            <div class="col-lg-4">
+            <div class="col-lg-3 offset-lg-2">
                 <% if user_signed_in? %>
                     <%= f.label :title, "タイトル" %>
                     <br>
