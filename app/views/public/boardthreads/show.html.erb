@@ -27,7 +27,7 @@
                 <table class="table">
                     <tr>
                         <td><%= link_to '編集', edit_public_boardthread_path(@boardthread), class: 'btn btn-success btn-sm' %></td>
-                        <td><%= link_to '削除', public_boardthread_path(@boardthread), class: 'btn btn-danger btn-sm' %></td>
+                        <td><%= link_to '削除', public_boardthread_path(@boardthread), method: :delete, class: 'btn btn-danger btn-sm' %></td>
                     </tr>
                 </table>
                 <% end %>
@@ -52,7 +52,7 @@
                         <tr>
                             <td><%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %></td>
                         </tr>
-                        <% if @boardthread.user == current_user %>
+                        <% if post_comment.user == current_user %>
                             <tr>
                                 <td><%= link_to '削除', public_boardthread_post_comment_path(@boardthread, post_comment), method: :delete, class: 'btn btn-danger btn-sm' %></td>
                             </tr>
@@ -62,12 +62,13 @@
                 
                 </table>
                 
-                <div>
-                    <%= form_with model: [:public, @boardthread, @post_comment] do |f| %>
+                <%= form_with model: [:public, @boardthread, @post_comment] do |f| %>
+                    <div>
                         <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
                         <%= f.submit "送信する" %>
-                    <% end %>
-                </div>
+                    </div>
+                <% end %>
+                
         </div>
     </div>
 </div>

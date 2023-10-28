@@ -12,9 +12,9 @@ class Boardthread < ApplicationRecord
         end
     end
   
-    belongs_to :board, dependent: :destroy
-    belongs_to :user, dependent: :destroy
-    has_many :post_comments, as: :post_commentable
+    belongs_to :board
+    belongs_to :user
+    has_many :post_comments, as: :post_commentable, dependent: :destroy
     has_many :favorites, as: :favorable
     
     validates :title, presence: true, length: { maximum: 100 }

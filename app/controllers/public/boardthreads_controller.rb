@@ -27,7 +27,7 @@ class Public::BoardthreadsController < ApplicationController
   def update
     @boardthread = Boardthread.find(params[:id])
     if @boardthread.update(boardthread_params)
-      redirect_to public_boardthread_path(@boardthread.id)
+      redirect_to public_boardthread_path(@boardthread)
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class Public::BoardthreadsController < ApplicationController
   def destroy
     @boardthread = Boardthread.find(params[:id])
     @boardthread.destroy
-    redirect_to public_boardthreads_path
+    redirect_to public_boards_path
   end
   
   def boardthread_params

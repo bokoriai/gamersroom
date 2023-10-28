@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="child">
+        <h2>スレッド編集</h2>
+            <%= form_with model: @review, url: public_review_path, method: :patch do |f| %>
+                <table class="table">
+                    <tr>
+                        <td><label for="inputTitle">タイトル</label></td>
+                    </tr>
+                    <tr>
+                        <td><%= f.text_field :title, autofocus: true, id:"inputTitle", placeholder:"タイトル" %></td>
+                    </tr>
+                    <tr>
+                        <td><label for="inputBody">本文</label></td>
+                    </tr>
+                    <tr>
+                        <td><%= f.text_area :body, placeholder:"本文" %></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <%= f.label :name, "ジャンル" %>
+                                <%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "--選択してください--" %>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><%= f.submit "編集する", class: 'btn btn-success' %></td>
+                    </tr>
+                </table>
+            <% end %>
+    </div>
+</div>
