@@ -1,9 +1,9 @@
-    <% if boardthread.favorited_by?(current_user) %>
-      <%= link_to public_boardthread_favorites_path(boardthread), method: :delete, remote: true do %>
-        ♥<%= boardthread.favorites.count %> いいね
-      <% end %>
-    <% else %>
-      <%= link_to public_boardthread_favorites_path(boardthread), method: :post, remote: true do %>
-        ♡<%= boardthread.favorites.count %> いいね
-      <% end %>
-    <% end %>
+<% if boardthread.favorited_by?(current_user) %>
+  <%= link_to public_boardthread_favorites_path(boardthread), method: :delete, remote: true do %>
+    ♥<%= boardthread.favorites.count %> いいね
+  <% end %>
+<% else %>
+  <%= link_to public_boardthread_favorites_path(boardthread), method: :post, remote: true do %>
+    ♡<%= boardthread.favorites.count %> いいね
+  <% end %>
+<% end %>

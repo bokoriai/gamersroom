@@ -18,11 +18,13 @@ Rails.application.routes.draw do
       resources :reviews do
         resources :post_comments, only: [:create, :destroy]
         resource :favorites, only: [:create, :destroy]
+        resource :bookmarks, only: [:create, :destroy]
       end
       resources :boards, only: [:index, :show, :new, :create]
       resources :boardthreads do
         resources :post_comments, only: [:create, :destroy]
         resource :favorites, only: [:create, :destroy]
+        resource :bookmarks, only: [:create, :destroy]
       end
   end
   
@@ -39,11 +41,13 @@ Rails.application.routes.draw do
     resources :reviews do
       resources :post_comments, only: [:create]
       resource :favorites, only: [:create, :destroy]
+      resource :bookmarks, only: [:create, :destroy]
     end
     resources :boards, only: [:index]
     resources :boardthreads do
       resources :post_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
+      resource :bookmarks, only: [:create, :destroy]
     end
   end
   

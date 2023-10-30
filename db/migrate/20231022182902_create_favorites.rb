@@ -5,6 +5,5 @@ class CreateFavorites < ActiveRecord::Migration[6.1]
       t.integer :favorable_id
       t.string :favorable_type
       t.timestamps
-    end
   end
 end

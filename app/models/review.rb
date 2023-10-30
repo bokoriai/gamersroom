@@ -4,6 +4,7 @@ class Review < ApplicationRecord
     belongs_to :genre
     has_many :post_comments, as: :post_commentable
     has_many :favorites, as: :favorable
+    has_many :bookmarks, as: :bookmarkable
     
     validates :title, presence: true
     validates :body, presence: true
