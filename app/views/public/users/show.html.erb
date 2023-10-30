@@ -22,7 +22,13 @@
         </div>
         
         <div class="col-lg-4 offset-lg-1">
-            <p>お気に入りレビュー</p>
+            <strong>お気に入りレビュー</strong>
+            <br>
+            <% @bookmark.reviews.each do |review| %>
+                <%= link_to public_review_path(review) do %>
+                    <%= review.title %>
+                <% end %>
+            <% end %>    
         </div>
         
         <div class="col-lg-4">

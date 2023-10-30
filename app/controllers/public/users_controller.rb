@@ -1,6 +1,7 @@
 class Public::UsersController < ApplicationController
     def show
         @user = current_user
+        @bookmark = Bookmark.find(params[:id])
     end
     
     def edit
