@@ -34,7 +34,9 @@
                         </div>
                     </td>
                     <td>
-                        
+                        <div id="bookmarkable_btn_<%= @review.id %>">
+                            <%= render "public/bookmarks/btn", review: @review %>
+                        </div>                        
                     </td>
                 </tr>
                 
@@ -56,9 +58,6 @@
                             <td>
                                 <%= post_comment.created_at.strftime('%Y/%m/%d') %>
                             </td>
-                        </tr>
-                        <tr>
-                            
                         </tr>
                 
                     <% if post_comment.user == current_user %>

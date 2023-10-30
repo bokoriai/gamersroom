@@ -33,26 +33,39 @@
                 <% end %>
                 
                 <% if user_signed_in? %>
-                    <div id="favorite_btn_boardthread_<%= @boardthread.id %>">
-                        <%= render "public/favorites/btn_boardthread", boardthread: @boardthread %>
-                    </div>            
-                
+                    <tr>
+                        <td>
+                            <div id="favorite_btn_boardthread_<%= @boardthread.id %>">
+                                <%= render "public/favorites/btn_boardthread", boardthread: @boardthread %>
+                            </div>
+                        </td>
+                        <td>
+                            <div id="bookmarkable_btn_boardthread_<%= @boardthread.id %>">
+                                <%= render "public/bookmarks/btn_boardthread", boardthread: @boardthread %>
+                            </div>                        
+                        </td>
+                    </tr>
+                        
                     <table class="table">
                         <tr>
-                            <th>コメント件数</th>
-                            <td><%= @boardthread.post_comments.count %></td>
+                            <th>コメント件数：<%= @boardthread.post_comments.count %></th>
                         </tr>
                 
                         <% @boardthread.post_comments.each do |post_comment| %>
                             <tr>
                                 <td>
                                     <%= image_tag post_comment.user.get_profile_image(50,50) %>
+                                    <br>
                                     <%= post_comment.user.name %>
                                 </td>
+                                <td>
+                                    <%= post_comment.comment %>
+                                </td>
+                                <td>
+                                    <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+                                </td>
                             </tr>
-                            <tr>
-                                <td><%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %></td>
-                            </tr>
+                            
                             <% if post_comment.user == current_user %>
                                 <tr>
                                     <td><%= link_to '削除', public_boardthread_post_comment_path(@boardthread, post_comment), method: :delete, class: 'btn btn-danger btn-sm' %></td>

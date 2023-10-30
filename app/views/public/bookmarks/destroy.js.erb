@@ -1,0 +1,5 @@
+<% if params[:review_id].present? %>
+    $("#bookmark_btn_<%= @review.id %>").html("<%= j(render 'public/bookmarks/btn', review: @review) %>");
+<% else %>
+    $("#bookmark_btn_boardthread_<%= @boardthread.id %>").html("<%= j(render 'public/bookmarks/btn_boardthread', boardthread: @boardthread) %>");
+<% end %>
