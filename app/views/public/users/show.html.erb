@@ -24,15 +24,29 @@
         <div class="col-lg-4 offset-lg-1">
             <strong>お気に入りレビュー</strong>
             <br>
-            <% @bookmark.reviews.each do |review| %>
-                <%= link_to public_review_path(review) do %>
-                    <%= review.title %>
+            <% if @bookmark_review_list.present? %>
+                <% @bookmark_review_list.each do |review| %>
+                    <%= link_to public_review_path(review) do %>
+                        <%= review.title %>
+                    <% end %>
                 <% end %>
-            <% end %>    
+            <% else %>
+                <p>お気に入りレビューはありません</p>
+            <% end %>
         </div>
         
         <div class="col-lg-4">
-            <p>お気に入り掲示板</p>
+            <strong>お気に入りスレッド</strong>
+            <br>
+            <% if @bookmark_boardthread_list.present? %>
+                <% @bookmark_boardthread_list.each do |boardthread| %>
+                    <%= link_to public_boardthread_path(boardthread) do %>
+                        <%= boardthread.title %>
+                    <% end %>
+                <% end %>
+            <% else %>
+                <p>お気に入りスレッドはありません</p>
+            <% end %>
         </div>
     </div>
 </div>

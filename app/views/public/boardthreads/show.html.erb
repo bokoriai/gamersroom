@@ -17,7 +17,10 @@
                         </tr>
                         <% if @boardthread.category.present? %>
                             <tr>
-                                <td><%= link_to @boardthread.category, public_tagsearches_search_path(content:@boardthread.category) %></td>
+                                <td>
+                                    <i class="fa-sharp fa-solid fa-tag"></i>
+                                    <%= link_to @boardthread.category, public_tagsearches_search_path(content:@boardthread.category) %>
+                                </td>
                             </tr>
                         <% end %>
                     </tbody>
@@ -40,7 +43,7 @@
                             </div>
                         </td>
                         <td>
-                            <div id="bookmarkable_btn_boardthread_<%= @boardthread.id %>">
+                            <div id="bookmark_btn_boardthread_<%= @boardthread.id %>">
                                 <%= render "public/bookmarks/btn_boardthread", boardthread: @boardthread %>
                             </div>                        
                         </td>

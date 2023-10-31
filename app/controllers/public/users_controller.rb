@@ -1,7 +1,10 @@
 class Public::UsersController < ApplicationController
     def show
         @user = current_user
-        @bookmark = Bookmark.find(params[:id])
+
+        bookmark_ids = Bookmark.where(user_id: current_user.id).pluck(:bookmarkable_id)
+        @bookmark_review_list = Review.where(id: bookmark_ids)
+        @bookmark_boardthread_list = Boardthread.where(id: bookmark_ids)
     end
     
     def edit
