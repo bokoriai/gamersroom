@@ -37,6 +37,11 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/' => 'homes#top'
     get 'tagsearches/search' => 'tagsearches#search'
+    get "/users" => "users#index"
+    get "/users/unsubscribe" => "users#unsubscribe" #退会確認画面
+    patch "/users/withdraw" => "users#withdraw" #退会ステータス更新機能ß
+    get "/users/information/edit" => "users#edit"
+    patch "/users" => "users#update"
     resources :genres, only: [:index, :create, :edit, :update]
     resources :reviews do
       resources :post_comments, only: [:create]

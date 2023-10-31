@@ -1,9 +1,12 @@
 < Gamer'sRoom 管理者メニュー >
 
-<ul>
     <li>新着レビュー一覧</li>
     <li>新着スレッド一覧</li>
-    <li>会員一覧</li>
-    <li>
-        <%= link_to 'ジャンル登録', admin_genres_path %></li>
-</ul>
+    
+    <div class="list-group">
+        <%= link_to '会員一覧', admin_users_path, class: 'list-group-item list-group-item-action list-group-item-info' %>
+    </div>
+    
+    <div class="list-group">
+        <%= link_to 'ジャンル登録', admin_genres_path, class: 'list-group-item list-group-item-action list-group-item-info' %>
+    </div>
