@@ -29,6 +29,7 @@
                     <%= link_to public_review_path(review) do %>
                         <%= review.title %>
                     <% end %>
+                    <br>
                 <% end %>
             <% else %>
                 <p>お気に入りレビューはありません</p>
@@ -43,6 +44,7 @@
                     <%= link_to public_boardthread_path(boardthread) do %>
                         <%= boardthread.title %>
                     <% end %>
+                    <br>
                 <% end %>
             <% else %>
                 <p>お気に入りスレッドはありません</p>

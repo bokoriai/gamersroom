@@ -13,10 +13,11 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <%= form_with model: [:admin, @user] do |f| %>
+                            <%= form_with model: [:admin, @user], url:admin_users_withdraw_path, method: :patch do |f| %>
                                 <%= f.label :is_deleted, "ユーザーステータス" %>
                                 <%= f.radio_button :is_deleted, "false" %> 有効
                                 <%= f.radio_button :is_deleted, "true" %> 退会
+                                <%= f.submit 'ユーザーを退会させる', class: 'btn btn-danger', data: { confirm: "このユーザーを退会させます。よろしいですか？"} %>
                             <% end %>
 				        </td>
                     </tr>

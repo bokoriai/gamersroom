@@ -12,6 +12,17 @@ class Admin::UsersController < ApplicationController
     end
     
     def update
+        @user = User.find(params[:id])
+        @user.update(user_params)
+        redirect_to admin_users_path
+    end
+    
+    def withdraw
+        @user = User.find(params[:id])
+        @user.update(is_deleted: true)
+        reset_session
+        flash[:notice] = "退会処理を実行しました"
+        redirect_to admin_users_path
     end
     
     private

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   namespace :public do
       get "/about" => "homes#about"
       get "/users/unsubscribe" => "users#unsubscribe" #退会確認画面
-      patch "/users/withdraw" => "users#withdraw" #退会ステータス更新機能ß
+      patch "/users/withdraw" => "users#withdraw" #退会ステータス更新機能
       get "/users/mypage" => "users#show"
       get "/users/information/edit" => "users#edit"
       patch "/users" => "users#update"
@@ -37,7 +37,8 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/' => 'homes#top'
     get 'tagsearches/search' => 'tagsearches#search'
-    resources :users, only: [:index, :show, :edit, :update]
+    resources :users, only: [:index, :show]
+    patch "/users/withdraw" => "users#withdraw" #退会ステータス更新機能
     resources :genres, only: [:index, :create, :edit, :update]
     resources :reviews do
       resources :post_comments, only: [:create]
