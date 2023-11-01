@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col">
             <% @users.each do |user| %>
-                <%= link_to admin_users_information_edit_path do %>
+                <%= link_to admin_user_path(user.id) do %>
                     <%= user.name %>
                 <% end %>
             <% end %>

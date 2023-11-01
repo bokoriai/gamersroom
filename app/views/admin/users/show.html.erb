@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-5 offset-lg-3">
+            <strong><h2>ユーザー詳細</h2></strong>
+                <table class="table">
+                    <tr>
+                        <th>ユーザー名</th>
+                        <td><%= @user.name %></td>
+                    </tr>
+                    <tr>
+                        <th>ユーザー画像</th>
+                        <td><%= image_tag @user.get_profile_image(100, 100) %></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <%= form_with model: [:admin, @user] do |f| %>
+                                <%= f.label :is_deleted, "ユーザーステータス" %>
+                                <%= f.radio_button :is_deleted, "false" %> 有効
+                                <%= f.radio_button :is_deleted, "true" %> 退会
+                            <% end %>
+				        </td>
+                    </tr>
+                </table>
+                
+                <%= link_to 'ユーザー一覧に戻る', admin_users_path, class: 'btn btn-outline-info' %>
+                <%= link_to '管理者メニューに戻る', admin_path, class: 'btn btn-outline-dark' %>
+        </div>
+    </div>
+</div>
