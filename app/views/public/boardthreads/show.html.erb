@@ -14,7 +14,6 @@
                         <tr>
                             <th>本文</th>
                             <td><%= @boardthread.body %></td>
-                            <td><p class="sentiment-score">本文の感情分析スコア[<%= @boardthread.score %>]</p></td>
                         </tr>
                         <% if @boardthread.category.present? %>
                             <tr>
