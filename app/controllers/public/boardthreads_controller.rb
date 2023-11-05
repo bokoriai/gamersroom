@@ -5,6 +5,7 @@ class Public::BoardthreadsController < ApplicationController
   def create
     board = Board.find(params[:boardthread][:id])
     @boardthread = Boardthread.new(boardthread_params)
+    @boardthread.score = Language.get_data(boardthread_params[:body])
     @boardthread.board_id = board.id
     @boardthread.user_id = current_user.id
     @boardthread.save
