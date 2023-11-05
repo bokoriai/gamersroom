@@ -11,6 +11,7 @@ class Public::ReviewsController < ApplicationController
     
     def create
         @review = Review.new(review_params)
+        @review.score = Language.get_data(review_params[:body])
         @review.user_id = current_user.id
         if @review.save
             redirect_to public_reviews_path
@@ -41,7 +42,7 @@ class Public::ReviewsController < ApplicationController
     
     private
     def review_params
-        params.require(:review).permit(:title, :body, :star, :category, :genre_id)
+        params.require(:review).permit(:title, :body, :star, :category, :genre_id, :score)
     end
     
 end

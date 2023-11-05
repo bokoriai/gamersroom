@@ -41,15 +41,13 @@ Rails.application.routes.draw do
     patch "/users/withdraw" => "users#withdraw" #退会ステータス更新機能
     resources :genres, only: [:index, :create, :edit, :update]
     resources :reviews do
-      resources :post_comments, only: [:create]
+      resources :post_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
-      resource :bookmarks, only: [:create, :destroy]
     end
     resources :boards, only: [:index]
     resources :boardthreads do
       resources :post_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
-      resource :bookmarks, only: [:create, :destroy]
     end
   end
   

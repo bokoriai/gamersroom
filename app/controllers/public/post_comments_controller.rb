@@ -25,8 +25,6 @@ class Public::PostCommentsController < ApplicationController
         end
     end
     
-    
-    
     private
     
     def post_comment_params

@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  
+  has_many :admin_actions # 管理者が行ったアクションを関連づけるためのリレーションシップ
          
   validates :email, presence: true
   validates :encrypted_password, presence: true

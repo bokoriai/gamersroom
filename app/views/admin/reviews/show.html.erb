@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <h2>レビュー詳細</h2>
+            <table class="table">
+                <tr>
+                    <th><strong>タイトル</strong></th>
+                    <td><%= @review.title %></td>
+                </tr>
+                <tr>
+                    <th><strong>本文</strong></th>
+                    <td><%= @review.body %></td>
+                </tr>
+                <tr>
+                    <th><strong>ジャンル</strong></th>
+                    <td><%= @review.genre.name %></td>
+                </tr>
+                <tr>
+                    <td><p class="sentiment-score">レビュー内容の感情分析スコア[<%= @review.score %>]</p></td>
+                    <% if @review.score.to_i < 0 %>
+                        <td><%= link_to '削除', admin_review_path(@review), method: :delete, class: 'btn btn-danger btn-sm' %></td>
+                    <% end %>
+                </tr>
+            </table>
+            
+            <%= link_to '削除', admin_review_path(@review), method: :delete, class: 'btn btn-danger btn-sm' %></td>
+  
+            <table class="table">
+                <tr>
+                    <td>いいね：<%= @review.favorites.count %>件</td>
+                </tr>
+                <tr>
+                    <th>コメント件数：<%= @review.post_comments.count %></th>
+                </tr> 
+    
+                <% @review.post_comments.each do |post_comment| %>
+                    <tr>
+                        <td>
+                            <%= image_tag post_comment.user.get_profile_image(50,50) %>
+                            <br>
+                            <%= post_comment.user.name %>
+                        </td>
+                        <td>
+                            <%= post_comment.comment %>
+                        </td>
+                        <td>
+                            <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><%= link_to '削除', admin_review_post_comment_path(@review, post_comment), method: :delete, class: 'btn btn-danger btn-sm' %></td>
+                    </tr>
+                <% end %>
+            </table>
+        </div>
+    </div>
+</div>
+

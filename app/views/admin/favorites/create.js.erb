@@ -1,0 +1,5 @@
+<% if params[:review_id].present? %>
+    $("#favorite_btn_<%= @review.id %>").html("<%= j(render 'admin/favorites/btn', review: @review) %>");
+<% else %>
+    $("#favorite_btn_boardthread_<%= @boardthread.id %>").html("<%= j(render 'admin/favorites/btn_boardthread', boardthread: @boardthread) %>");
+<% end %>
