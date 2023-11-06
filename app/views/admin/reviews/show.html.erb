@@ -19,19 +19,19 @@
                     <td><p class="sentiment-score">レビュー内容の感情分析スコア[<%= @review.score %>]</p></td>
                     
                     <% if @review.score.to_f < 0.0 %>
-                        <td><%= link_to '削除', admin_review_path(@review), method: :delete, class: 'btn btn-danger btn-sm' %></td>
+                        <td><%= link_to '削除', admin_review_path(@review), method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: "本当に削除してよろしいですか？"} %></td>
                     <% end %>
                 </tr>
             </table>
             
-            <%= link_to '削除', admin_review_path(@review), method: :delete, class: 'btn btn-danger btn-sm' %></td>
+            <%= link_to '不適切な内容を含むため削除する', admin_review_path(@review), method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: "本当に削除してよろしいですか？"} %></td>
   
             <table class="table">
                 <tr>
                     <td>いいね：<%= @review.favorites.count %>件</td>
                 </tr>
                 <tr>
-                    <th>コメント件数：<%= @review.post_comments.count %></th>
+                    <th>コメント件数：<%= @review.post_comments.count %>件</th>
                 </tr> 
     
                 <% @review.post_comments.each do |post_comment| %>
@@ -49,7 +49,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><%= link_to '削除', admin_review_post_comment_path(@review, post_comment), method: :delete, class: 'btn btn-danger btn-sm' %></td>
+                        <td><%= link_to '削除', admin_review_post_comment_path(@review, post_comment), method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: "本当に削除してよろしいですか？"} %></td>
                     </tr>
                 <% end %>
             </table>
