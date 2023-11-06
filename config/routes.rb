@@ -37,8 +37,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/' => 'homes#top'
     get 'tagsearches/search' => 'tagsearches#search'
-    resources :users, only: [:index, :show]
-    patch "/users/withdraw" => "users#withdraw" #退会ステータス更新機能
+    resources :users, only: [:index, :show, :destroy]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :reviews do
       resources :post_comments, only: [:create, :destroy]
