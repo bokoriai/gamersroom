@@ -1,0 +1,15 @@
+            <% reviews.each do |review| %>
+                <strong>レビュータイトル</strong>
+                <br>
+                <%= link_to public_review_path(review) do %>
+                    <%= review.title %>
+                <% end %>
+                <br>
+                <strong>レビュー本文</strong>
+                <br>
+                <%= review.body %>
+                <br>
+                <strong>ユーザー名</strong>
+                <%= review.user.name %>
+                <br>
+            <% end %>

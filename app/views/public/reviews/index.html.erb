@@ -3,22 +3,9 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-7">
-            <!--span class="border border-danger border-4"</span> -->
-            <% @reviews.each do |review| %>
-                <strong>レビュータイトル</strong>
-                <br>
-                <%= link_to public_review_path(review) do %>
-                    <%= review.title %>
-                <% end %>
-                <br>
-                <strong>レビュー本文</strong>
-                <br>
-                <%= review.body %>
-                <br>
-                <strong>ユーザー名</strong>
-                <%= review.user.name %>
-                <br>
-            <% end %>
+
+            <%= render 'index', reviews: @reviews %>
+
         </div>
         
         <%= form_with model: @review, url: public_reviews_path, method: :post, local: true do |f| %>

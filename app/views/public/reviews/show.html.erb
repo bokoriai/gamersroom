@@ -13,7 +13,7 @@
                 </tr>
                 <tr>
                     <th><strong>ジャンル</strong></th>
-                    <td><%= @review.genre.name %></td>
+                    <td><%= link_to @review.genre.name, public_genresearches_search_path(content:@review.genre.name) %></td>
                 </tr>
             </table>
             
