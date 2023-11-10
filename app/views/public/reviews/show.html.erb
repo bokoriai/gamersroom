@@ -15,6 +15,10 @@
                     <th><strong>ジャンル</strong></th>
                     <td><%= link_to @review.genre.name, public_genresearches_search_path(content:@review.genre.name) %></td>
                 </tr>
+                <tr>
+                    <th><strong>評価</strong></th>
+                    <td><%= render "static_rate", review: @review %></td>
+                </tr>
             </table>
             
             <% if @review.user == current_user %>
