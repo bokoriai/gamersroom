@@ -12,6 +12,11 @@
         <div class="col-lg-4 offset-lg-1">
             <%= form_with model: @review, url: public_reviews_path, method: :post, local: true do |f| %>
                 <% if user_signed_in? %>
+                    <div class="form-group">
+                        <%= f.label :game_title, "ゲームタイトル" %>
+                        <%= f.collection_select :game_title, Review.all, :id, :game_title, :prompt => "--選択してください--" %>
+                    </div>
+                    <br>
                     <%= f.label :title, "タイトル" %>
                     <br>
                     <%= f.text_field :title %>
@@ -57,16 +62,24 @@
                     <% end %>
             
                     <%= f.submit '新規投稿', class: 'btn btn-primary' %>
+                    
                 <% else %>
                     <p class="text-center">
                         レビュー投稿には会員登録が必要です。<br>
                         会員登録は<%= link_to 'こちら', new_user_registration_path %><br>
                         既に会員登録済みの方は<%= link_to 'こちら', new_user_session_path %>
                     </p>
-                <% end %>                
-            </div>
-        <% end %>
-        
+                <% end %>
+            <% end %>
+            
+            <p>ゲームタイトルが選択欄に存在しない場合、以下から登録してください</p>
+            <%= form_with model: @review, url: gametitlenew_public_reviews_path, method: :post, local: true do |f| %>
+                <%= f.label :game_title, "登録するゲームタイトル" %>
+                <%= f.text_field :game_title %>
+                <%= f.submit '新規登録', class: 'btn btn-primary' %>
+            <% end %>
+        </div>
+            
         <!-- 検索画面に戻るというボタンと遷移先を設定すること -->
         
     </div>

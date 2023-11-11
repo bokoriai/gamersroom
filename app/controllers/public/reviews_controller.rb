@@ -15,19 +15,33 @@ class Public::ReviewsController < ApplicationController
         @review = Review.find(params[:id])
         @post_comment = PostComment.new
     end
-    
+
     def create
         @review = Review.new(review_params)
         @review.score = Language.get_data(review_params[:body])
         @review.user_id = current_user.id
-        if @review.save
+        if @review.game_title.nil?
+            redirect_to new_game_title_path(review_params[:game_title])
+        else
+            if @review.save
+                redirect_to public_reviews_path
+            else
+                @reviews = Review.all
+                render :index
+            end
+        end
+    end
+
+    def gametitlenew
+        @review = Review.new(game_title_params)
+        if @review.save(validate: false)
             redirect_to public_reviews_path
         else
             @reviews = Review.all
             render :index
         end
     end
-    
+                
     def edit
         @review = Review.find(params[:id])
     end
@@ -52,4 +66,7 @@ class Public::ReviewsController < ApplicationController
         params.require(:review).permit(:title, :body, :star, :category, :genre_id, :score)
     end
     
+    def game_title_params
+        params.require(:review).permit(:game_title)
+    end
 end
