@@ -1,11 +1,12 @@
 <h2>レビュー一覧</h2>
+<div>
+    <%= link_to '新しい順', public_reviews_path(latest: "true") %> | <%= link_to '古い順', public_reviews_path(old: "true") %>
+</div>
 
 <div class="container">
     <div class="row">
         <div class="col-lg-7">
-
             <%= render 'index', reviews: @reviews %>
-
         </div>
         
         <div class="col-lg-4 offset-lg-1">

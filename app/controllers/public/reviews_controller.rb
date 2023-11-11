@@ -1,6 +1,13 @@
 class Public::ReviewsController < ApplicationController
     def index
-        @reviews = Review.all
+        if params[:latest]
+            @reviews = Review.latest
+        elsif params[:old]
+            @reviews = Review.old
+        else
+            @reviews = Review.all
+        end
+        
         @review = Review.new
     end
     
