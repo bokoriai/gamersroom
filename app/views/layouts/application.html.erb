@@ -33,7 +33,7 @@
                     </li>
         
                     <li class="nav-item">
-                      <%= link_to 'レビュー', public_reviews_path, class: 'nav-link text-light' %>
+                      <%= link_to 'レビュー', public_games_path, class: 'nav-link text-light' %>
                     </li>
                     
                     <li class="nav-item">
@@ -67,7 +67,7 @@
                     </li>
         
                     <li class="nav-item">
-                      <%= link_to 'レビュー', public_reviews_path, class: 'nav-link text-light' %>
+                      <%= link_to 'レビュー', public_games_path, class: 'nav-link text-light' %>
                     </li>
         
                     <li class="nav-item">
@@ -82,9 +82,7 @@
       </nav>
         
     </header>
-    
-    <%= render 'public/tagsearches/form' %>
-    
+
     <%= yield %>
     
   </body>

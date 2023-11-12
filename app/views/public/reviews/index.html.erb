@@ -12,11 +12,7 @@
         <div class="col-lg-4 offset-lg-1">
             <%= form_with model: @review, url: public_reviews_path, method: :post, local: true do |f| %>
                 <% if user_signed_in? %>
-                    <div class="form-group">
-                        <%= f.label :game_title, "ゲームタイトル" %>
-                        <%= f.collection_select :game_title, Review.all, :id, :game_title, :prompt => "--選択してください--" %>
-                    </div>
-                    <br>
+
                     <%= f.label :title, "タイトル" %>
                     <br>
                     <%= f.text_field :title %>

@@ -14,8 +14,9 @@ Rails.application.routes.draw do
       get "/users/mypage" => "users#show"
       get "/users/information/edit" => "users#edit"
       patch "/users" => "users#update"
-      get "tagsearches/search" => "tagsearches#search"
-      get "genresearches/search" => "genresearches#search"
+      get "/tagsearches/search" => "tagsearches#search"
+      get "/genresearches/search" => "genresearches#search"
+      get "/gamesearches/search" => "gamesearches#search"
       resources :reviews do
         resources :post_comments, only: [:create, :destroy]
         resource :favorites, only: [:create, :destroy]
