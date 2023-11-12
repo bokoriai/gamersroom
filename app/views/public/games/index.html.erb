@@ -1,23 +1,37 @@
 <div class="container">
     <div class="row">
-        <div class="col-lg-5">
+        <div class="col-lg-2">
             <p>ゲームタイトル検索</p>
                 <% if user_signed_in? %>
                     <%= form_with url: public_gamesearches_search_path, method: :get, local: true do |f| %>
                         <%= f.text_field :content %>
+                        <br>
                         <%= f.select :method, options_for_select({"完全一致" => "perfect", "部分一致" => "partial"}) %>
                         <%= f.submit "検索" %>
                     <% end %>
                 <% end %>
-            
-            <p>最近レビュー投稿があったゲームタイトル</p>
-            <% @games.each do |game| %>
-                ⚪︎<%= game.game_title %>
+        </div>
+        
+        <div class="col-lg-4 offset-lg-1">
+            <% if @recent_reviews.present? %>
+                <p>最近レビュー投稿があったゲームタイトル</p>
+                <% @recent_games.each do |game| %>
+                    <%= game.game_title %>
+                <% end %>
+            <% else %>
+                <p>最近のレビュー投稿はありません</p>
             <% end %>
         </div>
 
-        <div class="col-lg-7">
-            <p>評価の高いレビューが多いゲームタイトル</p>
-        </div>    
+        <div class="col-lg-4 offset-lg-1">
+            <% if @top_rated_games.present? %>
+                <p>評価の高いレビューが多いゲームタイトル</p>
+                <% @top_rated_games.each do |game| %>
+                    <%= game.game_title %>
+                <% end %>
+            <% else %>
+                <p>評価の高いレビューはありません</p>
+            <% end %>
+        </div>
     </div>
 </div>

@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <h3>検索結果</h3>
+                <% if @records.present? %>
+                    <% @records.each do |record| %>
+                        <%= link_to public_reviews_path do %>
+                            <%= record.game_title %>
+                        <% end %>
+                    <% end %>
+                <% else %>
+                    <p>検索されたゲームタイトルはまだ投稿がありませんでした😔</p>
+                    <br>
+                    <p>以下のフォームからタイトルを登録して、</p>
+                    <br>
+                    <p>そのゲームの最初のレビュー投稿をしてください🤩</p>
+                    
+                    <%= form_with model: @game, url: public_games_path, method: :post, local: true do |f| %>
+                        <%= f.text_field :game_title %>
+                        <%= f.submit 'タイトル登録', class: 'btn btn-primary' %>
+                    <% end %>
+                <% end %>
+        </div>
+    </div>
+</div>

@@ -6,9 +6,9 @@ class Game < ApplicationRecord
     
     def self.search_for(content, method)
         if method == 'perfect'
-            Game.where(name: content)
+            Game.where(game_title: content)
         else
-            Game.where('name LIKE ?', '%' + content + '%')
+            Game.where('game_title LIKE ?', '%' + content + '%')
         end
     end
 end
