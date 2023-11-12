@@ -1,0 +1,2 @@
+module Public::GamesearchesHelper
+end

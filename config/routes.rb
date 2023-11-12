@@ -21,6 +21,7 @@ Rails.application.routes.draw do
         resource :favorites, only: [:create, :destroy]
         resource :bookmarks, only: [:create, :destroy]
       end
+      resources :games, only: [:index, :create]
       resources :boards, only: [:index, :show, :new, :create]
       resources :boardthreads do
         resources :post_comments, only: [:create, :destroy]
