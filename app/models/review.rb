@@ -2,6 +2,7 @@ class Review < ApplicationRecord
   
     belongs_to :user
     belongs_to :genre
+    belongs_to :game
     has_many :post_comments, as: :post_commentable
     has_many :favorites, as: :favorable
     has_many :bookmarks, as: :bookmarkable

@@ -17,7 +17,6 @@ Rails.application.routes.draw do
       get "tagsearches/search" => "tagsearches#search"
       get "genresearches/search" => "genresearches#search"
       resources :reviews do
-        post 'gametitlenew', on: :collection
         resources :post_comments, only: [:create, :destroy]
         resource :favorites, only: [:create, :destroy]
         resource :bookmarks, only: [:create, :destroy]
