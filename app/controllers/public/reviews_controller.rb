@@ -7,7 +7,8 @@ class Public::ReviewsController < ApplicationController
         else
             @reviews = Review.all
         end
-        
+        @game = Game.find(params[:game_id])
+        @reviews = @game.reviews
         @review = Review.new
     end
     
@@ -17,10 +18,9 @@ class Public::ReviewsController < ApplicationController
     end
 
     def create
-        game = Game.find(params[:review][:id])
         @review = Review.new(review_params)
         @review.score = Language.get_data(review_params[:body])
-        @review.game_id = game.id
+        @review.game_id = params[:review][:game_id]
         @review.user_id = current_user.id
         if @review.save
             redirect_to public_reviews_path
