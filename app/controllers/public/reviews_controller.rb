@@ -5,10 +5,10 @@ class Public::ReviewsController < ApplicationController
         elsif params[:old]
             @reviews = Review.old
         else
-            @reviews = Review.all
+            @game = Game.find(params[:game_id])
+            @reviews = @game.reviews
         end
         @review = Review.new
-        @game = Game.find(params[:game_id])
     end
     
     def show

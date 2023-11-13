@@ -10,8 +10,8 @@ class Review < ApplicationRecord
     validates :title, presence: true
     validates :body, presence: true
     
-    scope :latest, -> {order(created_at: :desc)}
-    scope :old, -> {order(created_at: :asc)}
+    scope :latest, -> { joins(:game).order("reviews.created_at DESC") }
+    scope :old, -> { joins(:game).order("reviews.created_at ASC") }
     
     def favorited_by?(user)
         favorites.exists?(user_id: user.id)
