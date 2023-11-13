@@ -1,7 +1,7 @@
 class Admin::BoardthreadsController < ApplicationController
     def index
         now = Time.current
-        @boardthreads = Boardthread.where(created_at: now.prev_weak...now).order(created_at: :desc)
+        @boardthreads = Boardthread.where(created_at: now.prev_week...now).order(created_at: :desc)
     end
     
     def show

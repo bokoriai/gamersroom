@@ -4,6 +4,6 @@ class Public::GamesearchesController < ApplicationController
         @content = params[:content]
         @method = params[:method]
         
-        @records = Game.search_for(@content, @method)
+        @games = Game.search_for(@content, @method)
     end
 end

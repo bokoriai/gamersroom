@@ -2,10 +2,10 @@
     <div class="row">
         <div class="col-lg-6 offset-lg-3">
             <h3>検索結果</h3>
-                <% if @records.present? %>
-                    <% @records.each do |record| %>
-                        <%= link_to public_reviews_path do %>
-                            <%= record.game_title %>
+                <% if @games.present? %>
+                    <% @games.each do |game| %>
+                        <%= link_to public_reviews_path(game_id: game.id) do %>
+                            <%= game.game_title %>
                         <% end %>
                     <% end %>
                 <% else %>
