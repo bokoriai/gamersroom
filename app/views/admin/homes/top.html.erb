@@ -1,20 +1,20 @@
-<h2><strong>< Gamer'sRoom 管理者メニュー ></strong></h2>
+<h2 class="test"><strong>< Gamer'sRoom 管理者メニュー ></strong></h2>
     <div class="container">
-        <div class="child">
+        <div class="w-40">
             <ul>
-                <li class="menu-list li">
+                <li class="admin-menu-list">
                     <%= link_to '新着レビュー一覧', admin_reviews_path %>
                 </li>
         
-                <li class="menu-list li">
+                <li class="admin-menu-list">
                     <%= link_to '新着スレッド一覧', admin_boardthreads_path %>
                 </li>
         
-               <li class="menu-list li">
+               <li class="admin-menu-list">
                     <%= link_to '会員一覧', admin_users_path %>
                 </li>
                 
-                <li class="menu-list li">
+                <li class="admin-menu-list">
                     <%= link_to 'ジャンル登録', admin_genres_path %>
                 </li>
             </ul>
