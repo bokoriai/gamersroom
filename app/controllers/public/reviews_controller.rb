@@ -1,11 +1,11 @@
 class Public::ReviewsController < ApplicationController
     def index
+        @game = Game.find(params[:game_id])
         if params[:latest]
-            @reviews = Review.latest
+            @reviews = @game.reviews.latest
         elsif params[:old]
-            @reviews = Review.old
+            @reviews = @game.reviews.old
         else
-            @game = Game.find(params[:game_id])
             @reviews = @game.reviews
         end
         @review = Review.new
@@ -23,10 +23,10 @@ class Public::ReviewsController < ApplicationController
         @review.game_id = params[:review][:game_id]
         @review.user_id = current_user.id
         if @review.save
-            redirect_to public_reviews_path(game_id:  params[:review][:game_id])
+            redirect_to public_reviews_path(game_id: @game.id)
         else                
-            @reviews = Review.all
-            render :index
+            @reviews = @game.reviews
+            redirect_to public_reviews_path(game_id: @game.id)
         end
     end
 

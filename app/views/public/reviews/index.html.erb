@@ -1,6 +1,6 @@
 <h2>レビュー一覧</h2>
 <div>
-    <%= link_to '新しい順', public_reviews_path(latest: "true") %> | <%= link_to '古い順', public_reviews_path(old: "true") %>
+    <%= link_to '新しい順', public_reviews_path(latest: "true", game_id: @game.id) %> | <%= link_to '古い順', public_reviews_path(old: "true", game_id: @game.id) %>
 </div>
 
 <div class="container">
