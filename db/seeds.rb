@@ -7,6 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.create!(
-    email: 'gamers@room',
-    password: 'kanrisya'
-    )
+  [
+    {email: ENV['ADMIN_EMAIL'], password: ENV['ADMIN_PASSWORD']}
+  ]
+)
+
+users = User.create!(
+  [
+    {email: 'murakami@example.com', name: '村上', password: ENV['USER_PASSWORD'], profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg"), filename:"sample-user1.jpg"
+  ]
+)
