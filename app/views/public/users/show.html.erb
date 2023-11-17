@@ -1,17 +1,15 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-3">
-            <p><h1>マイページ</h1></p>
+            <p><h2 class="heading">マイページ</h2></p>
             
-                <table class="table">
+                <table class="table table-borderless">
                     <tbody>
                         <tr>
-                            <th>ユーザー名</th>
-                            <th><%= @user.name %></th>
+                            <td><p><%= image_tag @user.get_profile_image(250, 250) %></p></td>
                         </tr>
                         <tr>
-                            <th>ユーザー画像</th>
-                            <th><p><%= image_tag @user.get_profile_image(100, 100) %></p></th>
+                            <td align="center"><%= @user.name %></td>
                         </tr>
                     </tbody>
                 </table>
@@ -22,7 +20,7 @@
         </div>
         
         <div class="col-lg-4 offset-lg-1">
-            <strong>お気に入りレビュー</strong>
+            <p class="mypage_favorite_review">お気に入りレビュー</p>
             <br>
             <% if @bookmark_review_list.present? %>
                 <% @bookmark_review_list.each do |review| %>
@@ -37,7 +35,7 @@
         </div>
         
         <div class="col-lg-4">
-            <strong>お気に入りスレッド</strong>
+            <p class="mypage_favorite_boardthread">お気に入りスレッド</p>
             <br>
             <% if @bookmark_boardthread_list.present? %>
                 <% @bookmark_boardthread_list.each do |boardthread| %>

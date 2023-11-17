@@ -1,8 +1,8 @@
 <div class="container">
-    <div class="child">
-        <h2>スレッド編集</h2>
+    <div class="w-50">
+        <h2 class="heading">スレッド編集</h2>
             <%= form_with model: @boardthread, url: public_boardthread_path, method: :patch do |f| %>
-                <table class="table">
+                <table class="table table-borderless">
                     <tr>
                         <td><label for="inputTitle">タイトル</label></td>
                     </tr>

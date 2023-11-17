@@ -1,16 +1,15 @@
-<strong><%= @board.title %>掲示板</strong>
-
 <div class="container">
     <div class="row">
         <div class="col-lg-7">
+            <h2 class="heading"><%= @board.title %>掲示板</h2>
         
-        <%= render 'show', boardthreads: @boardthreads %>
+            <%= render 'show', boardthreads: @boardthreads %>
             
         </div>
         
         <div class="col-lg-3 offset-lg-2">
             <% if user_signed_in? %>
-            <p>スレッド新規投稿フォーム</p>
+            <p class="heading">スレッド新規投稿フォーム</p>
                 <%= form_with model: @boardthreads, url: public_boardthreads_path, method: :post do |f| %>
                     <%= f.hidden_field :id, value: @board.id %>
 
@@ -24,6 +23,7 @@
                     <br>
                     <div class="form-group">
                         <label>タグ</label>
+                        <br>
                         <%= f.text_field :category, class: 'form_control boardthread_category' %>
                     </div>
                     <br>

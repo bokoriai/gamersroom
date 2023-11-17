@@ -1,8 +1,7 @@
-<div class="p-3 mb-2 bg-primary text-white">掲示板一覧</div>
-
 <div class="container">
     <div class="row">
         <div class="col-lg-7">
+            <h2 class="heading">掲示板一覧</h2>
             <% @boards.each do |board| %>
                 <%= link_to public_board_path(board) do %>
                     ・<%= board.title %>
@@ -12,6 +11,10 @@
         
         <div class="col-lg-3 offset-lg-2">
             <% if user_signed_in? %>
+                <p>
+                    お目当ての掲示板が無ければ<br>
+                    以下から作成してください✨
+                </p>
                 <%= link_to '掲示板新規作成はこちら', new_public_board_path, class: 'btn btn-outline-danger' %>
                 <br>
             <% else %>

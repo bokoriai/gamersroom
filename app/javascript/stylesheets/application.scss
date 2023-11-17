@@ -1,5 +1,17 @@
 @use '~bootstrap/scss/bootstrap';
 
+@import url('https://fonts.googleapis.com/css?family=BioRhyme+Expanded');
+
+.main_font_box {
+  font-size: 35px;
+  margin: 10px;
+  font-weight: bold;
+}
+
+.main_font {
+  font-family: "Noto Sans Japanese";  /* フォントを指定 */
+}
+
 ul {
   padding: 0;
   position: relative;
@@ -22,4 +34,88 @@ ul {
   position: absolute;
   left: 0.5em; /*左端からのアイコンまでの距離*/
   color: white; /*アイコン色*/
+}
+
+.mypage_favorite_review{
+   position: relative;
+    display: inline-block;
+    padding: 15px 20px 15px 40px;
+    margin: 10px 0;
+    color: #ffffff;
+    border-radius: 35px 0 0 35px;
+    background: #0296e6;
+}
+
+.center{
+  text-align: center;
+}
+
+.mypage_favorite_review:before {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    content: '';
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #ffffff;
+}
+
+.mypage_favorite_boardthread{
+   position: relative;
+    display: inline-block;
+    padding: 15px 20px 15px 40px;
+    margin: 10px 0;
+    color: #ffffff;
+    border-radius: 35px 0 0 35px;
+    background: #00ab47;
+}
+
+.center{
+  text-align: center;
+}
+
+.mypage_favorite_boardthread:before {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    content: '';
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #ffffff;
+}
+
+.heading{
+    position:relative;
+    border-bottom:3px solid #819dfa;
+    padding-left: 27px;
+}
+
+.game_index {
+    margin:  0;                 /* デフォルトCSS打ち消し */
+    font-size:  15px;           /* 文字サイズ指定 */
+    position:  relative;        /* 位置調整 */
+    font-weight:  normal;       /* 文字の太さ調整 */
+    display:  inline-block;     /* インラインブロックにする */
+    background-color: #feeaac;  /* 背景色指定 */
+    padding:  10px;             /* 余白指定 */
+    margin-bottom: 15px;        /* 周りの余白指定 */
+    border-radius:  2px;        /* 角丸指定 */
+}
+
+.game_index:before {
+    content:  '';               /* 空白の要素を作る */
+    background-color: #b3b3b3;  /* 背景色指定 */
+    display:  block;            /* ブロック要素にする */
+    position:  absolute;        /* 位置調整 */
+    left: 50%;                  /* 位置調整 */
+    height: 60%;                /* 高さ指定 */
+    top: 26%;                   /* 位置調整 */
+    z-index:  -1;               /* 重なり調整 */
+    width: 46%;                 /* 幅指定 */
+    box-shadow: 0 0 8px 8px #b3b3b3;/* 影指定 */
+    transform: rotate(3deg);    /* 回転 */
 }

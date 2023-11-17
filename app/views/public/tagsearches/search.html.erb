@@ -1,7 +1,7 @@
 <div class="container">
-    <div class="child">
+    <div class="w-75">
         <% if @word.present? %>
-            <h2>"<%= @word %>"タグが付いているスレッド一覧</h2>
+            <h2 class="heading">"<%= @word %>"タグが付いているスレッド一覧</h2>
             <%= render 'public/boards/show', boardthreads: @boardthreads %>
         <% else %>
             <p class="text-center">スレッドは存在しません</p>
