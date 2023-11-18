@@ -119,3 +119,46 @@ ul {
     box-shadow: 0 0 8px 8px #b3b3b3;/* 影指定 */
     transform: rotate(3deg);    /* 回転 */
 }
+
+ol.list{
+  counter-reset:list;
+  list-style-type:none;
+  font: 14px/1.6 'arial narrow', sans-serif;
+  padding:0;
+}
+ol.list li{
+  position:relative;
+  padding: 0 0 0 30px;
+  margin: 7px 0 7px 0px;
+  font-weight: bold;
+  font-size:14px;
+  line-height: 29px;
+  border: dashed 1px transparent;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+}
+ol.list li:before{
+  counter-increment: list;
+  content: counter(list);
+  position: absolute;
+  left: -10px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  color: #fff;
+  line-height:30px;
+  background: #F6A38B;
+  border-radius: 50%;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+ol.list li:hover{
+  border-bottom-color: #F6A38B;
+}

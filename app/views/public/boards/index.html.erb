@@ -4,7 +4,11 @@
             <h2 class="heading">掲示板一覧</h2>
             <% @boards.each do |board| %>
                 <%= link_to public_board_path(board) do %>
-                    ・<%= board.title %>
+                    <ol class="list">
+                        <li>
+                            <%= board.title %>
+                        </li>
+                    </ol>
                 <% end %>
             <% end %>
         </div>
