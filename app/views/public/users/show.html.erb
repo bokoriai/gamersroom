@@ -24,10 +24,14 @@
             <br>
             <% if @bookmark_review_list.present? %>
                 <% @bookmark_review_list.each do |review| %>
-                    <%= link_to public_review_path(review) do %>
-                        <%= review.title %>
-                    <% end %>
+                    <ol class="list">
+                        <li>
+                            <%= link_to public_review_path(review) do %>
+                                <%= review.title %>
+                            <% end %>
+                        </li>
                     <br>
+                    </ol>
                 <% end %>
             <% else %>
                 <p>お気に入りレビューはありません</p>
@@ -39,10 +43,14 @@
             <br>
             <% if @bookmark_boardthread_list.present? %>
                 <% @bookmark_boardthread_list.each do |boardthread| %>
-                    <%= link_to public_boardthread_path(boardthread) do %>
-                        <%= boardthread.title %>
-                    <% end %>
+                    <ol class="list">
+                        <li>
+                            <%= link_to public_boardthread_path(boardthread) do %>
+                            <%= boardthread.title %>
+                            <% end %>
+                        </li>
                     <br>
+                    </ol>
                 <% end %>
             <% else %>
                 <p>お気に入りスレッドはありません</p>
