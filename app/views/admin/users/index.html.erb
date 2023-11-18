@@ -1,11 +1,16 @@
 <div class="container">
     <div class="row">
-        <div class="col">
-            <% @users.each do |user| %>
-                <%= link_to admin_user_path(user.id) do %>
-                    <%= user.name %>
+        <div class="col-lg-6 offset-lg-3">
+            <h2 class="heading">ユーザー一覧</h2>
+                <% @users.each do |user| %>
+                    <ol class="list">
+                        <li>
+                            <%= link_to admin_user_path(user.id) do %>
+                            <%= user.name %>
+                        </li>
+                    <% end %>
+                    </ol>
                 <% end %>
-            <% end %>
-      </div>
-  </div>
+            </div>
+    </div>
 </div>

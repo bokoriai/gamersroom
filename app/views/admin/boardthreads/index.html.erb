@@ -1,22 +1,22 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-7 offset-lg-2">
-            <strong><h2>新着スレッド一覧</h2></strong>
+            <h2 class="heading">新着スレッド一覧</h2>
                 <table class="table table-borderless">
                     <thead>
                         <tr>
-                          <th>#</th>
-                              <th>スレッドタイトル</th>
-                              <th>スレッド内容</th>
+                            <th></th>
+                            <th>スレッドタイトル</th>
+                            <th>スレッド内容</th>
                         </tr>
                     </thead>
                     <tbody>
                         <% @boardthreads.each do |boardthread| %>
                             <tr>
-                                <th scope="row">1</th>
-                                    <td><%= boardthread.title %></td>
-                                    <td><%= boardthread.body.truncate(20) %></td>
-                                    <td><%= link_to '詳細', admin_boardthread_path(boardthread), class: 'btn btn-primary btn-sm' %></td>
+                                <td></td>
+                                <td><%= boardthread.title %></td>
+                                <td><%= boardthread.body.truncate(20) %></td>
+                                <td><%= link_to '詳細', admin_boardthread_path(boardthread), class: 'btn btn-primary btn-sm' %></td>
                             </tr>
                         <% end %>
                     </tbody>

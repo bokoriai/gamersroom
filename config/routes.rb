@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'public/tagsearches#search'
+  root 'public/homes#about'
   #顧客用
   #URL /user/
   devise_for :users, skip: [:passwords], controllers: {
@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   }
   
   namespace :public do
-      get "/about" => "homes#about"
       get "/users/unsubscribe" => "users#unsubscribe" #退会確認画面
       patch "/users/withdraw" => "users#withdraw" #退会ステータス更新機能
       get "/users/mypage" => "users#show"

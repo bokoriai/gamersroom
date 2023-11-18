@@ -1,22 +1,22 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-7 offset-lg-2">
-            <strong><h2>新着レビュー一覧</h2></strong>
+            <h2 class="heading">新着レビュー一覧</h2>
                 <table class="table table-borderless">
                     <thead>
                         <tr>
-                          <th>#</th>
-                              <th>レビュータイトル</th>
-                              <th>レビュー内容</th>
+                            <th></th>
+                            <th>レビュータイトル</th>
+                            <th>レビュー内容</th>
                         </tr>
                     </thead>
                     <tbody>
                         <% @reviews.each do |review| %>
                             <tr>
-                                <th scope="row">1</th>
-                                    <td><%= review.title %></td>
-                                    <td><%= review.body.truncate(20) %></td>
-                                    <td><%= link_to '詳細', admin_review_path(review), class: 'btn btn-primary btn-sm' %></td>
+                                <th></th>
+                                <td><%= review.title %></td>
+                                <td><%= review.body.truncate(20) %></td>
+                                <td><%= link_to '詳細', admin_review_path(review), class: 'btn btn-primary btn-sm' %></td>
                             </tr>
                         <% end %>
                     </tbody>
