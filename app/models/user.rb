@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
          
   validates :email, presence: true
-  validates :encrypted_password, presence: true
+  validates :password, presence: true
          
   has_one_attached :profile_image
   

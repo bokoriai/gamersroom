@@ -6,14 +6,27 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Admin.create!(
+
+
+Admin.find_or_create_by!(email: ENV['ADMIN_EMAIL']) do |admin|
+  admin.password = ENV['ADMIN_PASSWORD']
+end
+
+Genre.create!(
   [
-    {email: ENV['ADMIN_EMAIL'], password: ENV['ADMIN_PASSWORD']}
+    {name: 'RPG'}, {name: 'アクション'}, {name: 'アクションRPG'}, {name: 'アクションアドベンチャー'}, {name: 'アドベンチャー'},
+    {name: 'シューティング'}, {name: 'FPS,TPS'}, {name: 'パズル'}, {name: 'クイズ'}, {name: 'シミュレーション'}, {name: '格闘'}, {name: '音楽'}
   ]
 )
 
-users = User.create!(
-  [
-    {email: 'murakami@example.com', name: '村上', password: ENV['USER_PASSWORD'], profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg"), filename:"sample-user1.jpg"
-  ]
-)
+Hanako = User.find_or_create_by!(email: "hanako@example.com") do |user|
+  user.name = "花子"
+  user.password = ENV['USER_PASSWORD']
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg"), filename:"sample-user1.jpg")
+end
+
+Tarou = User.find_or_create_by!(email: "tarou@example.com") do |user|
+  user.name = "太郎"
+  user.password = ENV['USER_PASSWORD']
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.jpg"), filename:"sample-user2.jpg")
+end
