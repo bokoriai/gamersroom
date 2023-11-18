@@ -17,7 +17,10 @@
             <br>
             <% if @recent_reviews.present? %>
                 <% @recent_reviews.each do |recent_review| %>
-                    <%= recent_review.game_title %>
+                    <ol class="list">
+                        <li><%= recent_review.game_title %></li>
+                    </ol>
+                    <br>
                 <% end %>
             <% else %>
                 <p>最近のレビュー投稿はありません</p>
@@ -29,7 +32,12 @@
             <br>
             <% if @top_rated_games.present? %>
                 <% @top_rated_games.each do |top_rated_game| %>
-                    <%= top_rated_game.game_title %>
+                    <ol class="list">
+                        <li>
+                            <%= top_rated_game.game_title %>
+                        </li>
+                    </ol>
+                    <br>
                 <% end %>
             <% else %>
                 <p>評価の高いレビューはありません</p>
