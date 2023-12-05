@@ -26,7 +26,6 @@ class Admin::PostCommentsController < ApplicationController
     end
     
     private
-    
     def post_comment_params
         params.require(:post_comment).permit(:comment, :review_id, :user_id, :boardthread_id)
     end

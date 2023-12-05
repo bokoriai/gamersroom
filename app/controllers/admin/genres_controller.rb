@@ -1,4 +1,6 @@
 class Admin::GenresController < ApplicationController
+    before_action :authenticate_admin!
+    
     def index
         @genre = Genre.new
         @genres = Genre.all
@@ -28,9 +30,14 @@ class Admin::GenresController < ApplicationController
     end
     
     private
+    def genre_params
+        params.require(:genre).permit(:name)
+    end
     
-        def genre_params
-            params.require(:genre).permit(:name)
+    def authenticate_admin!
+        unless current_user.email == ENV['ADMIN_EMAIL']
+            redirect_to root_path
         end
+    end
         
 end

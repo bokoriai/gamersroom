@@ -1,5 +1,5 @@
 class Admin::FavoritesController < ApplicationController
-  def create
+def create
     if params[:review_id].present?
       @review = Review.find(params[:review_id])
       favorite = @review.favorites.new
@@ -11,7 +11,7 @@ class Admin::FavoritesController < ApplicationController
       favorite.user_id = current_user.id
       favorite.save
     end
-  end
+end
 
   def destroy
     if params[:review_id].present?
