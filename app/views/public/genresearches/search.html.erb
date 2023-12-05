@@ -1,10 +1,8 @@
 <div class="container">
-    <div class="child">
         <% if @word.present? %>
             <h2>ジャンルが"<%= @word %>"のレビュー一覧</h2>
-            <%= render 'public/reviews/index', reviews: @reviews %>
+            <%= render "public/reviews/index", reviews: @reviews %>
         <% else %>
             <p class="text-center">レビューは存在しません</p>
         <% end %>
-    </div>
 </div>
