@@ -28,5 +28,5 @@ end
 Tarou = User.find_or_create_by!(email: "tarou@example.com") do |user|
   user.name = "太郎"
   user.password = ENV['USER_PASSWORD']
-  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.jpg"), filename:"sample-user2.jpg")
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.jpg"),filename:"sample-user2.jpg")
 end
